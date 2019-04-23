@@ -1,3 +1,9 @@
-<p>
-  watched-stock works!
-</p>
+<h2>Watched Stocks</h2>
+<table>
+    <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
+        <td> {{watchStock.id}}</td>
+        <td> {{watchStock.stockSymbol['symbol']}}</td>
+        <td> {{watchStock.startWatch}}</td>
+        <td> {{watchStock.endWatch}}</td>
+    </div>
+</table>
