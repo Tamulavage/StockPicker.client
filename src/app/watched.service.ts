@@ -14,7 +14,7 @@ export class WatchedService {
 
   private baseUri = 'https://fathomless-depths-87543.herokuapp.com';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getWatchedStocks(): Observable<Watched[]> {
     const url = `${this.baseUri}/watch/`;

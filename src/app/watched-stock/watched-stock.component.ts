@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {WatchedService} from "../watched.service";
-import {ActivatedRoute} from "@angular/router";
-import {Watched} from "../watched";
+import {WatchedService} from '../watched.service';
+import {ActivatedRoute} from '@angular/router';
+import {Watched} from '../watched';
 
 @Component({
   selector: 'app-watched-stock',
@@ -10,7 +10,7 @@ import {Watched} from "../watched";
 })
 export class WatchedStockComponent implements OnInit {
 
-  watchStock : Watched;
+  watchStock: Watched;
   listOfWatched: Watched[];
 
   constructor(private watchedService: WatchedService,

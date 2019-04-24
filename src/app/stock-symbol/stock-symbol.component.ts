@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StockSymbol} from "../stockSymbol";
-import {StockSymbolService} from "../stock-symbol.service";
+import {StockSymbol} from '../stockSymbol';
+import {StockSymbolService} from '../stock-symbol.service';
 
 @Component({
   selector: 'app-stock-symbol',
@@ -9,7 +9,7 @@ import {StockSymbolService} from "../stock-symbol.service";
 })
 export class StockSymbolComponent implements OnInit {
 
-  stockSymbol : StockSymbol;
+  stockSymbol: StockSymbol;
   stockSymbols: StockSymbol[];
 
   constructor(private stockSymbolService: StockSymbolService) { }
