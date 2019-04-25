@@ -1,10 +1,10 @@
 <h2> Stock History</h2>
 <table >
-<!--  <div *ngFor="let stockHistory of stockHistories" class="dropdown-item  text-light">-->
-<!--    <td> {{stockHistory.close}}</td>-->
-<!--  <td>As of: {{lastRefreshed}}</td>-->
-<!--  <td>{{stockHistoryRawData["Meta Data"]["3. Last Refreshed"]}}</td>-->
-<!--  <td>Open Amount $: {{stockHistory.open}}</td>-->
-  <td>Open Amount $: {{stockHistory["1. open"]}}</td>
-<!--  </div>-->
+  <div *ngFor="let stockHistory of stockHistories" class="dropdown-item  text-light">
+    <td>Open Amount $: {{stockHistory["1. open"]}}</td>
+    <td>Close Amount $: {{stockHistory["4. close"]}}</td>
+    <td>Volume $: {{stockHistory["5. volume"]}}</td>
+    <td>High Amount $: {{stockHistory["2. high"]}}</td>
+    <td>Low Amount $: {{stockHistory["3. low"]}}</td>
+  </div>
 </table>
