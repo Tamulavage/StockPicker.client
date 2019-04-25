@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StockHistoryService} from '../stock-history.service';
-import {StockHistory} from '../stockHistory';
 import {StockSymbol} from '../stockSymbol';
-import {StockHistoryRawData} from '../StockHistoryRawData';
+import {StockHistory} from '../stockHistory';
 
 const timeSeries = 'Time Series (Daily)';
 
@@ -14,25 +13,30 @@ const timeSeries = 'Time Series (Daily)';
 export class StockHistoryComponent implements OnInit {
 
     stockHistory: StockHistory;
-    stockHistoryRawData: StockHistoryRawData;
-    stockHistories: StockHistory[];
+    stockHistories: StockHistory[] = [];
     stockSymbol: StockSymbol;
-    timeSeries: string;
-    lastRefreshed: string;
 
 
     constructor(private stockHistoryService: StockHistoryService) {
     }
 
     ngOnInit() {
-        const symbol = 'ACN';
-        this.timeSeries = timeSeries;
+        // TODO : clean up data used for initial API analysis
+        const symbol = '';
         this.stockSymbol = ({symbol} as StockSymbol);
-        this.stockHistoryService.getStockHistoryFromApi(this.stockSymbol).subscribe(stock => {
-            this.stockHistoryRawData = stock;
-            this.lastRefreshed = this.stockHistoryRawData['Meta Data']['3. Last Refreshed'];
-            // this.stockHistories =  this.stockHistoryRawData['Time Series (Daily)']['2018-11-28'];
-            this.stockHistory =  this.stockHistoryRawData['Time Series (Daily)']['2018-11-28'];
+        this.getDailyData();
+    }
+
+    getDailyData() {
+        this.stockHistoryService.getStockHistoryFromApi(this.stockSymbol).subscribe(data => {
+            const dailySet = data[timeSeries];
+
+            Object.keys(dailySet).forEach(key => {
+                const stockData: StockHistory = dailySet[key];
+                stockData.Date = new Date(key);
+                this.stockHistories.push(stockData);
+            });
+
         });
     }
 
