@@ -22,7 +22,7 @@ export class StockHistoryComponent implements OnInit {
 
     ngOnInit() {
         // TODO : clean up data used for initial API analysis
-        const symbol = '';
+        const symbol = 'JPM';
         this.stockSymbol = ({symbol} as StockSymbol);
         this.getDailyData();
     }

@@ -7,18 +7,21 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { StockSymbolComponent } from './stock-symbol/stock-symbol.component';
 import { StockHistoryComponent } from './stock-history/stock-history.component';
-
+import { ChartComponent } from './chart/chart.component';
+import { ChartModule } from '@syncfusion/ej2-angular-charts';
 @NgModule({
   declarations: [
     AppComponent,
     WatchedStockComponent,
     StockSymbolComponent,
-    StockHistoryComponent
+    StockHistoryComponent,
+    ChartComponent
   ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
-    BrowserModule
+    BrowserModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
