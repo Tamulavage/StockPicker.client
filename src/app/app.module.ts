@@ -8,7 +8,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { StockSymbolComponent } from './stock-symbol/stock-symbol.component';
 import { StockHistoryComponent } from './stock-history/stock-history.component';
 import { ChartComponent } from './chart/chart.component';
-import { ChartModule } from '@syncfusion/ej2-angular-charts';
+import { StockHistoryService } from './stock-history.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +21,9 @@ import { ChartModule } from '@syncfusion/ej2-angular-charts';
   imports: [
     AppRoutingModule,
     HttpClientModule,
-    BrowserModule,
-    ChartModule
+    BrowserModule
   ],
-  providers: [],
+  providers: [StockHistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

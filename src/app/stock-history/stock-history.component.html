@@ -1,6 +1,7 @@
 <h2> Stock History</h2>
 <table >
   <div *ngFor="let stockHistory of stockHistories" class="dropdown-item  text-light">
+    <td>Date: {{stockHistory["Date"]}}</td>
     <td>Open Amount $: {{stockHistory["1. open"]}}</td>
     <td>Close Amount $: {{stockHistory["4. close"]}}</td>
     <td>Volume $: {{stockHistory["5. volume"]}}</td>

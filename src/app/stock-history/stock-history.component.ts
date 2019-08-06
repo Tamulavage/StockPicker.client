@@ -13,7 +13,7 @@ const timeSeries = 'Time Series (Daily)';
 export class StockHistoryComponent implements OnInit {
 
     stockHistory: StockHistory;
-    stockHistories: StockHistory[] = [];
+    stockHistories: StockHistory[] = new Array();
     stockSymbol: StockSymbol;
 
 
