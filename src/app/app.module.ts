@@ -7,8 +7,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { StockSymbolComponent } from './stock-symbol/stock-symbol.component';
 import { StockHistoryComponent } from './stock-history/stock-history.component';
-import { ChartComponent } from './chart/chart.component';
 import { StockHistoryService } from './stock-history.service';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { CandleStickChartComponent } from './candle-stick-chart/candle-stick-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -16,12 +18,13 @@ import { StockHistoryService } from './stock-history.service';
     WatchedStockComponent,
     StockSymbolComponent,
     StockHistoryComponent,
-    ChartComponent
+    CandleStickChartComponent
   ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
-    BrowserModule
+    BrowserModule,
+    GoogleChartsModule
   ],
   providers: [StockHistoryService],
   bootstrap: [AppComponent]
