@@ -1,5 +1,5 @@
 export class Watched {
-    id: number;
+    // id: number;
     stockSymbol: string;
     startWatch: string;
     endWatch: string;
