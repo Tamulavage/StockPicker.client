@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StockHistoryService } from '../stock-history.service';
 import { StockHistory } from '../stockHistory';
 
@@ -12,6 +12,7 @@ const timeSeries = 'Time Series (Daily)';
   styleUrls: ['./candle-stick-chart.component.css']
 })
 export class CandleStickChartComponent implements OnInit {
+  @Input() inputSymbol: string;
   title = '';
   type = 'CandlestickChart';
   data = [
@@ -31,10 +32,13 @@ export class CandleStickChartComponent implements OnInit {
   constructor(private stockHistoryService: StockHistoryService) { }
 
   ngOnInit() {
-    const symbol = 'JPM';
-    this.stockSymbol = ({ symbol } as StockSymbol);
-    this.getDailyData();
-    this.title = symbol + ' last 50 days';
+    if (this.inputSymbol != null) {
+      const symbol = this.inputSymbol;
+      this.stockSymbol = ({ symbol } as StockSymbol);
+      this.getDailyData();
+      this.title = symbol + ' last 50 days';
+      (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
+    }
   }
   getDailyData() {
     this.stockHistoryService.getStockHistoryFromApi(this.stockSymbol).subscribe(data => {
@@ -57,7 +61,7 @@ export class CandleStickChartComponent implements OnInit {
       if (data.Date.valueOf() > (Date.now() - (50 * 86400000))) {
         data.Date = new Date(data.Date.valueOf() + 86400000);
         temp = [data.Date, Number(data['3. low']), Number(data['1. open']), Number(data['4. close']), Number(data['2. high'])];
-        console.log(temp);
+        // console.log(temp);
         tableData.push(temp);
       }
     });

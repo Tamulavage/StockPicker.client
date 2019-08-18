@@ -1,9 +1,16 @@
-<h2>Watched Stocks</h2>
-<table>
-    <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
-        <td> {{watchStock.id}}</td>
-        <td> {{watchStock.stockSymbol['symbol']}}</td>
-        <td> {{watchStock.startWatch}}</td>
-        <td> {{watchStock.endWatch}}</td>
+<h4>Watched</h4>
+<ul>
+    <button id="addWatched" (click)="addNew()">New</button>
+    <button id="endWatched" (click)="endCurrent()">End</button>
+    <div id="stockShortNameDiv" hidden="true">
+        <input id="stockShortName" placeholder="stock?" #newStockToAdd />
     </div>
-</table>
+    <button id="ok" hidden="true" (click)="update(newStockToAdd.value)">ok</button>
+    <button id="cancel" hidden="true" (click)="cancel()">Cancel</button>
+
+    <div id="currentWatched">
+        <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
+            <ul (click)="refreshData(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}}</ul>
+        </div>
+    </div>
+</ul>

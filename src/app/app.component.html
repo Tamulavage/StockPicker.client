@@ -1,12 +1,10 @@
-<div  class="container-fluid">
-  <div class="align-content-md-center">
-    <app-stock-symbol></app-stock-symbol>
-    <app-watched-stock></app-watched-stock>
-    <!-- <app-chart></app-chart> -->
-    <app-candle-stick-chart></app-candle-stick-chart>
-    <!-- <app-stock-history></app-stock-history> -->
-  </div>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+<div class="topnav">
+  <a routerLink="/stock"> Watched/Current</a>
+  <a routerLink="/past"> Past Trades</a>
+  <a routerLink="/trade"> Trade</a>
+</div>
+
+<div>
+  <p>
+  <router-outlet></router-outlet>
 </div>

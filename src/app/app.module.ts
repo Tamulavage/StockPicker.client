@@ -10,6 +10,9 @@ import { StockHistoryComponent } from './stock-history/stock-history.component';
 import { StockHistoryService } from './stock-history.service';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { CandleStickChartComponent } from './candle-stick-chart/candle-stick-chart.component';
+import { StockInformationComponent } from './stock-information/stock-information.component';
+import { PastTradesComponent } from './past-trades/past-trades.component';
+import { TradeComponent } from './trade/trade.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { CandleStickChartComponent } from './candle-stick-chart/candle-stick-cha
     WatchedStockComponent,
     StockSymbolComponent,
     StockHistoryComponent,
-    CandleStickChartComponent
+    CandleStickChartComponent,
+    StockInformationComponent,
+    PastTradesComponent,
+    TradeComponent
   ],
   imports: [
     AppRoutingModule,

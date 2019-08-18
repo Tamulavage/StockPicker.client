@@ -1,0 +1,7 @@
+<table>
+  <!-- <td><app-watched-stock></app-watched-stock></td> -->
+  <td><app-watched-stock (reloadComponents)="reload($event)"></app-watched-stock></td>
+  <!-- <td><app-candle-stick-chart></app-candle-stick-chart></td> -->
+  <td><app-candle-stick-chart [inputSymbol]="stockSymbol" ></app-candle-stick-chart></td>
+  <td><app-past-trades></app-past-trades></td>
+</table>
