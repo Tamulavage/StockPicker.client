@@ -1,11 +1,11 @@
 <h4>Watched</h4>
 <ul>
     <button id="addWatched" (click)="addNew()">New</button>
-    <button id="endWatched" (click)="endCurrent()">End</button>
+    <button id="endWatched" (click)="endCurrent()">Remove</button>
     <div id="stockShortNameDiv" hidden="true">
-        <input id="stockShortName" placeholder="stock?" #newStockToAdd />
+        <input id="stockSymbol" placeholder="stock:" #newStockToAdd />
     </div>
-    <button id="ok" hidden="true" (click)="update(newStockToAdd.value)">ok</button>
+    <button id="ok" hidden="true" (click)="update(newStockToAdd.value, newStockToAddCompanyName)">ok</button>
     <button id="cancel" hidden="true" (click)="cancel()">Cancel</button>
 
     <div id="currentWatched">
@@ -13,4 +13,11 @@
             <ul (click)="refreshData(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}}</ul>
         </div>
     </div>
+
+    <div id="currentWatchedToRemove" hidden = "true">
+        <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
+            <ul (click)="endDate(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}}</ul>
+        </div>
+    </div>
+
 </ul>

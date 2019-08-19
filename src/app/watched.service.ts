@@ -26,4 +26,11 @@ export class WatchedService {
     console.log(url);
     return this.http.post<Watched>(url, watched, httpOptions);
   }
+
+  end(watched: Watched) {
+    console.log(watched);
+    const url = `${this.baseUri}/watch/end/${watched.stockSymbol}`;
+    console.log(url);
+    return this.http.post<Watched>(url, watched, httpOptions);
+  }
 }
