@@ -23,7 +23,6 @@ export class StockInformationComponent implements OnInit {
 
   reload(e: string) {
     this.stockSymbol = e;
-    // console.log(this.stockSymbol);
     this.router.navigate([`stock/${this.stockSymbol}`]);
 }
 
