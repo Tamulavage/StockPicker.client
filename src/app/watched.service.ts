@@ -18,6 +18,7 @@ export class WatchedService {
 
   getWatchedStocks(): Observable<Watched[]> {
     const url = `${this.baseUri}/watch/`;
+    console.log(url);
     return this.http.get<Watched[]>(url);
   }
 
@@ -28,7 +29,7 @@ export class WatchedService {
   }
 
   end(watched: Watched) {
-    console.log(watched);
+    // console.log(watched);
     const url = `${this.baseUri}/watch/end/${watched.stockSymbol}`;
     console.log(url);
     return this.http.post<Watched>(url, watched, httpOptions);

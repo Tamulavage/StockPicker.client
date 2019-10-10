@@ -37,7 +37,7 @@ export class CandleStickChartComponent implements OnInit {
       this.stockSymbol = ({ symbol } as StockSymbol);
       this.getDailyData();
       this.title = symbol + ' last 50 days';
-      (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
+      // (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
     }
   }
   getDailyData() {
@@ -51,6 +51,7 @@ export class CandleStickChartComponent implements OnInit {
       });
 
       this.populateTable();
+      (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
     });
   }
 

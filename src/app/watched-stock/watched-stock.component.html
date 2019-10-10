@@ -9,14 +9,16 @@
     <button id="cancel" hidden="true" (click)="cancel()">Cancel</button>
 
     <div id="currentWatched">
+        Watch Stock
         <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
-            <ul (click)="refreshData(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}}</ul>
+            <ul (click)="refreshData(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}</ul>
         </div>
     </div>
 
     <div id="currentWatchedToRemove" hidden = "true">
+       Remove Stock :
         <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
-            <ul (click)="endDate(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}}</ul>
+            <ul (click)="endDate(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}</ul>
         </div>
     </div>
 
