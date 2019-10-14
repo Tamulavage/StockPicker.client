@@ -45,9 +45,13 @@ export class WatchedStockComponent implements OnInit {
   endDate(stockToEnd: string): void {
     const updatedWatched: Watched = new Watched();
     updatedWatched.stockSymbol = stockToEnd;
-    updatedWatched.endWatch = this.getTodaysDate();
+    // TODO: need to fix: removing last in array versus correct one.
+    this.listOfWatched.splice(this.listOfWatched.indexOf(updatedWatched) , 1 ) ;
+
     this.watchedService.end(updatedWatched)
-    .subscribe(item => this.watchStock = this.watchStock);
+     .subscribe(item => this.watchStock = item);
+
+    this.reset();
   }
 
   update(stockToAdd: string): void {
@@ -56,7 +60,7 @@ export class WatchedStockComponent implements OnInit {
     updatedWatched.stockSymbol = stockToAdd;
     updatedWatched.startWatch = this.getTodaysDate();
     this.watchedService.update(updatedWatched)
-    .subscribe(item => this.watchStock = this.watchStock);
+    .subscribe(item => this.watchStock = item);
     this.refreshData(stockToAdd);
   }
 
@@ -66,6 +70,10 @@ export class WatchedStockComponent implements OnInit {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
     return yyyy + '-' + mm + '-' + dd;
+  }
+
+  reset(): void {
+    this.cancel();
   }
 
   cancel(): void {
