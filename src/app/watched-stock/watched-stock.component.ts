@@ -45,14 +45,11 @@ export class WatchedStockComponent implements OnInit {
   endDate(stockToEnd: string): void {
     const updatedWatched: Watched = new Watched();
     updatedWatched.stockSymbol = stockToEnd;
-    // console.log(this.listOfWatched);
-    // console.log(this.listOfWatched.indexOf(updatedWatched));
+    // TODO: need to fix: removing last in array versus correct one.
     this.listOfWatched.splice(this.listOfWatched.indexOf(updatedWatched) , 1 ) ;
-    // this.listOfWatched = this.listOfWatched.splice(this.listOfWatched.indexOf(updatedWatched) ) ;
 
     this.watchedService.end(updatedWatched)
      .subscribe(item => this.watchStock = item);
-    // this.watchedService.getWatchedStocks().subscribe(stock => this.listOfWatched = stock);
 
     this.reset();
   }
