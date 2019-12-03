@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StockSymbol} from '../stockSymbol';
-import {StockSymbolService} from '../stock-symbol.service';
+import {StockSymbol} from '../models/stockSymbol';
+import {StockSymbolService} from '../services/stock-symbol.service';
 
 @Component({
   selector: 'app-stock-symbol',

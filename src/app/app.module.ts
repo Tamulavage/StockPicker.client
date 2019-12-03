@@ -7,7 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { StockSymbolComponent } from './stock-symbol/stock-symbol.component';
 import { StockHistoryComponent } from './stock-history/stock-history.component';
-import { StockHistoryService } from './stock-history.service';
+import { StockHistoryService } from './services/stock-history.service';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { CandleStickChartComponent } from './candle-stick-chart/candle-stick-chart.component';
 import { StockInformationComponent } from './stock-information/stock-information.component';

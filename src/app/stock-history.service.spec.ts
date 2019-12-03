@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StockHistoryService } from './stock-history.service';
+import { StockHistoryService } from './services/stock-history.service';
 
 describe('StockHistoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
