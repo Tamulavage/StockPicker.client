@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StockSymbolService } from './stock-symbol.service';
+import { StockSymbolService } from './services/stock-symbol.service';
 
 describe('StockSymbolService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

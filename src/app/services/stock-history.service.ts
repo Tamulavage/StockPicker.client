@@ -1,6 +1,6 @@
 import {Injectable, Injector} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {StockSymbol} from './stockSymbol';
+import {StockSymbol} from '../models/stockSymbol';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/internal/operators/tap';
 import {map} from 'rxjs/operators';

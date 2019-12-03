@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {StockHistoryService} from '../stock-history.service';
-import {StockSymbol} from '../stockSymbol';
-import {StockHistory} from '../stockHistory';
+import {StockHistoryService} from '../services/stock-history.service';
+import {StockSymbol} from '../models/stockSymbol';
+import {StockHistory} from '../models/stockHistory';
 
 const timeSeries = 'Time Series (Daily)';
 

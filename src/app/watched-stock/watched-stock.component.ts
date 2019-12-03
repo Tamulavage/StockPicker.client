@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { WatchedService } from '../watched.service';
 import { ActivatedRoute } from '@angular/router';
-import { Watched } from '../watched';
+import { WatchedService } from '../services/watched.service';
+import { Watched } from '../models/watched';
 
 @Component({
   selector: 'app-watched-stock',
