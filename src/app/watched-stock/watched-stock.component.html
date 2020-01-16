@@ -18,7 +18,7 @@
     <div id="currentWatchedToRemove" hidden = "true">
        Remove Stock :
         <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
-            <ul (click)="endDate(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}</ul>
+            <ul (click)="endDate(watchStock)"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}</ul>
         </div>
     </div>
 
