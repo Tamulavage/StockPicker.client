@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WatchedService } from '../services/watched.service';
 import { Watched } from '../models/watched';
+import { StockSymbol } from '../models/stockSymbol';
 
 @Component({
   selector: 'app-watched-stock',
@@ -42,13 +43,11 @@ export class WatchedStockComponent implements OnInit {
     (document.getElementById('currentWatchedToRemove') as HTMLInputElement).hidden = false;
   }
 
-  endDate(stockToEnd: string): void {
-    const updatedWatched: Watched = new Watched();
-    updatedWatched.stockSymbol = stockToEnd;
-    // TODO: need to fix: removing last in array versus correct one.
-    this.listOfWatched.splice(this.listOfWatched.indexOf(updatedWatched) , 1 ) ;
+  endDate(stockToEnd: Watched): void {
+    this.listOfWatched.splice(this.listOfWatched.indexOf(stockToEnd) , 1 ) ;
 
-    this.watchedService.end(updatedWatched)
+    const stockSymbol: any = stockToEnd.stockSymbol;
+    this.watchedService.end(stockSymbol)
      .subscribe(item => this.watchStock = item);
 
     this.reset();

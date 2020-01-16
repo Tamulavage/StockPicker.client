@@ -12,7 +12,7 @@ export class TradeService {
   constructor(private http: HttpClient) { }
 
   getAllTradedStocks(): Observable<Trades[]> {
-    const url = `${this.baseUri}/rade/`;
+    const url = `${this.baseUri}/Trade/`;
     return this.http.get<Trades[]>(url);
   }
 }
