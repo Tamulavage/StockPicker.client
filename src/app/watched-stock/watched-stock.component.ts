@@ -27,7 +27,6 @@ export class WatchedStockComponent implements OnInit {
     this.watchedService.getWatchedStocks().subscribe(stock => this.listOfWatched = stock);
   }
 
-
   refreshData(stockSelected: string): string {
     this.reloadComponents.emit(stockSelected);
     return;
@@ -62,7 +61,7 @@ export class WatchedStockComponent implements OnInit {
     updatedWatched.stockSymbol = stock;
     updatedWatched.startWatch = this.getTodaysDate();
     this.watchedService.update(updatedWatched)
-    .subscribe(item => this.watchStock = item);
+      .subscribe(item => this.listOfWatched.push(item));
     this.refreshData(stockToAdd);
   }
 

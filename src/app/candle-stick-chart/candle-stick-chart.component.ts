@@ -13,6 +13,7 @@ const timeSeries = 'Time Series (Daily)';
 })
 export class CandleStickChartComponent implements OnInit {
   @Input() inputSymbol: string;
+  showStockTable = false;
   title = '';
   type = 'CandlestickChart';
   data = [
@@ -26,6 +27,7 @@ export class CandleStickChartComponent implements OnInit {
   };
   width = 1000;
   height = 500;
+  columnNames = '';
   stockSymbol: StockSymbol;
   public stockHistories: StockHistory[] = new Array();
 
@@ -51,7 +53,7 @@ export class CandleStickChartComponent implements OnInit {
         });
 
         this.populateTable();
-        (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
+        this.showStockTable = true;
       } else {
         console.log('Error hitting API , check that API is up is a valid stock symbol');
       }
@@ -65,7 +67,6 @@ export class CandleStickChartComponent implements OnInit {
       if (data.Date.valueOf() > (Date.now() - (50 * 86400000))) {
         data.Date = new Date(data.Date.valueOf() + 86400000);
         temp = [data.Date, Number(data['3. low']), Number(data['1. open']), Number(data['4. close']), Number(data['2. high'])];
-        // console.log(temp);
         tableData.push(temp);
       }
     });
