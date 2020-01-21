@@ -1,10 +1,12 @@
-<div id="stockTable" hidden="true">
+<div *ngIf="showStockTable">
 <google-chart #chart
    [title]="title"
    [type]="type"
    [data]="data"
+   [columnNames]="columnNames"
    [options]="options"
    [width]="width"
    [height]="height">
 </google-chart>
+<app-stock-analyze [stockSymbol]="inputSymbol"></app-stock-analyze>
 </div>

@@ -13,6 +13,7 @@ import { CandleStickChartComponent } from './candle-stick-chart/candle-stick-cha
 import { StockInformationComponent } from './stock-information/stock-information.component';
 import { PastTradesComponent } from './past-trades/past-trades.component';
 import { TradeComponent } from './trade/trade.component';
+import { StockAnalyzeComponent } from './stock-analyze/stock-analyze.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TradeComponent } from './trade/trade.component';
     CandleStickChartComponent,
     StockInformationComponent,
     PastTradesComponent,
-    TradeComponent
+    TradeComponent,
+    StockAnalyzeComponent
   ],
   imports: [
     AppRoutingModule,

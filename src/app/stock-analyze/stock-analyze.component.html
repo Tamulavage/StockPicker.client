@@ -1,0 +1,8 @@
+<div class="align-center">
+    <div (click)="getAnalysis()">
+        Click here for Analysis of {{stockSymbol}} !
+    </div>
+    <div *ngIf="analysis">
+        {{analysis.suggest}}
+    </div>
+</div>
