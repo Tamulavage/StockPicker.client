@@ -25,7 +25,7 @@ export class WatchedService {
 
   update(watched: Watched) {
     const url = `${this.baseUri}/watch/new`;
-    // console.log(url);
+    console.log(watched);
     return this.http.post<Watched>(url, watched, httpOptions);
   }
 

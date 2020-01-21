@@ -1,5 +1,7 @@
+import { StockSymbol } from './stockSymbol';
+
 export class Watched {
-    stockSymbol: string;
+    stockSymbol: StockSymbol;
     startWatch: string;
     endWatch: string;
 }
