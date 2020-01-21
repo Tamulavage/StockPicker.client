@@ -14,6 +14,10 @@ export class WatchedStockComponent implements OnInit {
   watchStock: Watched;
   listOfWatched: Watched[];
 
+  showMainButton = true;
+  showAddFeature = false;
+  showRemoveFeature = false;
+
   @Output() reloadComponents: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private watchedService: WatchedService,
@@ -30,17 +34,13 @@ export class WatchedStockComponent implements OnInit {
   }
 
   addNew(): void {
-    (document.getElementById('currentWatched') as HTMLInputElement).hidden = true;
-    (document.getElementById('stockShortNameDiv') as HTMLInputElement).hidden = false;
-    (document.getElementById('addWatched') as HTMLInputElement).hidden = true;
-    (document.getElementById('endWatched') as HTMLInputElement).hidden = true;
-    (document.getElementById('cancel') as HTMLInputElement).hidden = false;
-    (document.getElementById('ok') as HTMLInputElement).hidden = false;
+    this.showMainButton = false;
+    this.showAddFeature = true;
   }
 
   endCurrent(): void {
-    (document.getElementById('currentWatched') as HTMLInputElement).hidden = true;
-    (document.getElementById('currentWatchedToRemove') as HTMLInputElement).hidden = false;
+    this.showMainButton = false;
+    this.showRemoveFeature = true;
   }
 
   endDate(stockToEnd: Watched): void {
@@ -53,10 +53,13 @@ export class WatchedStockComponent implements OnInit {
     this.reset();
   }
 
-  update(stockToAdd: string): void {
+  update(stockToAdd: string, companyNameToAdd: string): void {
 
     const updatedWatched: Watched = new Watched();
-    updatedWatched.stockSymbol = stockToAdd;
+    const stock: StockSymbol = new StockSymbol();
+    stock.symbol = stockToAdd;
+    stock.name = companyNameToAdd;
+    updatedWatched.stockSymbol = stock;
     updatedWatched.startWatch = this.getTodaysDate();
     this.watchedService.update(updatedWatched)
     .subscribe(item => this.watchStock = item);
@@ -76,12 +79,8 @@ export class WatchedStockComponent implements OnInit {
   }
 
   cancel(): void {
-    (document.getElementById('currentWatched') as HTMLInputElement).hidden = false;
-    (document.getElementById('stockShortNameDiv') as HTMLInputElement).hidden = true;
-    (document.getElementById('addWatched') as HTMLInputElement).hidden = false;
-    (document.getElementById('endWatched') as HTMLInputElement).hidden = false;
-    (document.getElementById('cancel') as HTMLInputElement).hidden = true;
-    (document.getElementById('ok') as HTMLInputElement).hidden = true;
-    (document.getElementById('currentWatchedToRemove') as HTMLInputElement).hidden = true;
+    this.showMainButton = true;
+    this.showAddFeature = false;
+    this.showRemoveFeature = false;
   }
 }

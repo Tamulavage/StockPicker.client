@@ -26,7 +26,7 @@ export class StockHistoryService {
 
     return this.http.get<any>(url)
         .pipe(
-          //  tap(_ => console.log(_))
+           tap(_ => console.log(_))
         )
         ;
 

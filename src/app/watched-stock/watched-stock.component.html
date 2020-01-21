@@ -1,24 +1,29 @@
 <h4>Watched</h4>
 <ul>
-    <button id="addWatched" (click)="addNew()">New</button>
-    <button id="endWatched" (click)="endCurrent()">Remove</button>
-    <div id="stockShortNameDiv" hidden="true">
-        <input id="stockSymbol" placeholder="stock:" #newStockToAdd />
-    </div>
-    <button id="ok" hidden="true" (click)="update(newStockToAdd.value)">ok</button>
-    <button id="cancel" hidden="true" (click)="cancel()">Cancel</button>
+    <button *ngIf="showMainButton" (click)="addNew()">New</button>
+    <button *ngIf="showMainButton" (click)="endCurrent()">Remove</button>
 
-    <div id="currentWatched">
+    <div *ngIf="showAddFeature">
+        <input id="stockSymbol" placeholder="stock:" #newStockToAdd />
+        <input id="companyName" placeholder="Name:" #newCompanyName />
+        <button (click)="update(newStockToAdd.value, newCompanyName.value)">ok</button>
+    </div>
+
+    <button *ngIf="!showMainButton" (click)="cancel()">Cancel</button>
+
+    <div *ngIf="showMainButton">
         Watch Stock
         <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
-            <ul (click)="refreshData(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}</ul>
+            <ul (click)="refreshData(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}} /
+                {{watchStock.stockSymbol['name']}}</ul>
         </div>
     </div>
 
-    <div id="currentWatchedToRemove" hidden = "true">
-       Remove Stock :
+    <div *ngIf="showRemoveFeature">
+        Remove Stock :
         <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
-            <ul (click)="endDate(watchStock)"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}</ul>
+            <ul (click)="endDate(watchStock)"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}
+            </ul>
         </div>
     </div>
 

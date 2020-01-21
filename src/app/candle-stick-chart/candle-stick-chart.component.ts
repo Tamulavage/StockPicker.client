@@ -37,21 +37,24 @@ export class CandleStickChartComponent implements OnInit {
       this.stockSymbol = ({ symbol } as StockSymbol);
       this.getDailyData();
       this.title = symbol + ' last 50 days';
-      // (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
     }
   }
   getDailyData() {
     this.stockHistoryService.getStockHistoryFromApi(this.stockSymbol).subscribe(data => {
       const dailySet = data[timeSeries];
 
-      Object.keys(dailySet).forEach(key => {
-        const stockData: StockHistory = dailySet[key];
-        stockData.Date = new Date(key);
-        this.stockHistories.push(stockData);
-      });
+      if ( dailySet ) {
+        Object.keys(dailySet).forEach(key => {
+          const stockData: StockHistory = dailySet[key];
+          stockData.Date = new Date(key);
+          this.stockHistories.push(stockData);
+        });
 
-      this.populateTable();
-      (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
+        this.populateTable();
+        (document.getElementById('stockTable') as HTMLInputElement).hidden = false;
+      } else {
+        console.log('Error hitting API , check that API is up is a valid stock symbol');
+      }
     });
   }
 
