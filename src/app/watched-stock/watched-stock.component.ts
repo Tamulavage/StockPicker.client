@@ -54,7 +54,7 @@ export class WatchedStockComponent implements OnInit {
 
   update(stockToAdd: string, companyNameToAdd: string): void {
 
-    if (!this.validStockData(stockToAdd, companyNameToAdd )) {
+    if (this.validStockData(stockToAdd, companyNameToAdd )) {
 
         console.log('Passed validation');
         const updatedWatched: Watched = new Watched();
@@ -63,11 +63,11 @@ export class WatchedStockComponent implements OnInit {
         stock.name = companyNameToAdd;
         updatedWatched.stockSymbol = stock;
         updatedWatched.startWatch = this.getTodaysDate();
+        this.listOfWatched.push(updatedWatched);
 
         this.watchedService.update(updatedWatched)
           .subscribe(item => {
-                this.listOfWatched.push(item);
-                console.log(this.listOfWatched);
+                console.log(item);
                 }
             );
         this.refreshData(stockToAdd);
@@ -80,11 +80,11 @@ export class WatchedStockComponent implements OnInit {
 
     // TODO : Add more validation
     if (stockToAdd && companyNameToAdd  ) {
+      return true;
+    } else {
       console.log('Null field check');
       alert('Null field adding stock');
       return false;
-    } else {
-      return true;
     }
 
   }

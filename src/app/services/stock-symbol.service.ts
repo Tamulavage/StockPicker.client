@@ -12,8 +12,8 @@ const httpOptions = {
 })
 export class StockSymbolService {
 
-  // private baseUri = 'https://fathomless-depths-87543.herokuapp.com/symbol';
-  private baseUri = 'http://localhost:8080/symbol';
+  private baseUri = 'https://fathomless-depths-87543.herokuapp.com/symbol';
+  // private baseUri = 'http://localhost:8080/symbol';
 
   constructor(private http: HttpClient) {
   }
