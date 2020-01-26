@@ -12,8 +12,8 @@ const httpOptions = {
 })
 export class WatchedService {
 
-  private baseUri = 'https://fathomless-depths-87543.herokuapp.com';
-  // private baseUri = 'http://localhost:8080';
+  // private baseUri = 'https://fathomless-depths-87543.herokuapp.com';
+  private baseUri = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class WatchedService {
     return this.http.get<Watched[]>(url);
   }
 
-  update(watched: Watched) {
+  update(watched: Watched): Observable<Watched> {
     const url = `${this.baseUri}/watch/new`;
     console.log(watched);
     return this.http.post<Watched>(url, watched, httpOptions);

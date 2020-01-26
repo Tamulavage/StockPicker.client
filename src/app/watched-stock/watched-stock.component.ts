@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WatchedService } from '../services/watched.service';
 import { Watched } from '../models/watched';
@@ -11,8 +11,7 @@ import { StockSymbol } from '../models/stockSymbol';
 })
 export class WatchedStockComponent implements OnInit {
 
-  watchStock: Watched;
-  listOfWatched: Watched[];
+  listOfWatched: Watched[] = [];
 
   showMainButton = true;
   showAddFeature = false;
@@ -20,8 +19,7 @@ export class WatchedStockComponent implements OnInit {
 
   @Output() reloadComponents: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private watchedService: WatchedService,
-              private route: ActivatedRoute) { }
+  constructor(private watchedService: WatchedService) { }
 
   ngOnInit() {
     this.watchedService.getWatchedStocks().subscribe(stock => this.listOfWatched = stock);
@@ -39,6 +37,7 @@ export class WatchedStockComponent implements OnInit {
 
   endCurrent(): void {
     this.showMainButton = false;
+    this.showAddFeature = false;
     this.showRemoveFeature = true;
   }
 
@@ -47,22 +46,47 @@ export class WatchedStockComponent implements OnInit {
 
     const stockSymbol: any = stockToEnd.stockSymbol;
     this.watchedService.end(stockSymbol)
-     .subscribe(item => this.watchStock = item);
+     .subscribe(
+       );
 
     this.reset();
   }
 
   update(stockToAdd: string, companyNameToAdd: string): void {
 
-    const updatedWatched: Watched = new Watched();
-    const stock: StockSymbol = new StockSymbol();
-    stock.symbol = stockToAdd;
-    stock.name = companyNameToAdd;
-    updatedWatched.stockSymbol = stock;
-    updatedWatched.startWatch = this.getTodaysDate();
-    this.watchedService.update(updatedWatched)
-      .subscribe(item => this.listOfWatched.push(item));
-    this.refreshData(stockToAdd);
+    if (!this.validStockData(stockToAdd, companyNameToAdd )) {
+
+        console.log('Passed validation');
+        const updatedWatched: Watched = new Watched();
+        const stock: StockSymbol = new StockSymbol();
+        stock.symbol = stockToAdd;
+        stock.name = companyNameToAdd;
+        updatedWatched.stockSymbol = stock;
+        updatedWatched.startWatch = this.getTodaysDate();
+
+        this.watchedService.update(updatedWatched)
+          .subscribe(item => {
+                this.listOfWatched.push(item);
+                console.log(this.listOfWatched);
+                }
+            );
+        this.refreshData(stockToAdd);
+    } else {
+      console.log('Failed validation');
+    }
+  }
+
+  private validStockData(stockToAdd: string, companyNameToAdd: string): boolean {
+
+    // TODO : Add more validation
+    if (stockToAdd && companyNameToAdd  ) {
+      console.log('Null field check');
+      alert('Null field adding stock');
+      return false;
+    } else {
+      return true;
+    }
+
   }
 
   getTodaysDate(): string {

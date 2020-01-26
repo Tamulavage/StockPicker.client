@@ -8,8 +8,8 @@ import { Analysis } from '../models/analysis';
 })
 export class AnalyzeStockService {
 
-  private baseUri = 'https://fathomless-depths-87543.herokuapp.com/watch';
-  // private baseUri = 'http://localhost:8080/watch';
+  // private baseUri = 'https://fathomless-depths-87543.herokuapp.com/watch';
+  private baseUri = 'http://localhost:8080/watch';
 
   constructor(private http: HttpClient) { }
 

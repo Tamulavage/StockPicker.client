@@ -13,7 +13,7 @@
 
     <div *ngIf="showMainButton">
         Watch Stock
-        <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
+        <div *ngFor="let watchStock of listOfWatched ">
             <ul (click)="refreshData(watchStock.stockSymbol['symbol'])"> {{watchStock.stockSymbol['symbol']}} /
                 {{watchStock.stockSymbol['name']}}</ul>
         </div>
@@ -21,7 +21,7 @@
 
     <div *ngIf="showRemoveFeature">
         Remove Stock :
-        <div *ngFor="let watchStock of listOfWatched" class="dropdown-item  text-light">
+        <div *ngFor="let watchStock of listOfWatched">
             <ul (click)="endDate(watchStock)"> {{watchStock.stockSymbol['symbol']}} / {{watchStock.stockSymbol['name']}}
             </ul>
         </div>

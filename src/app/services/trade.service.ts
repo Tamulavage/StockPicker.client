@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class TradeService {
 
-  // private baseUri = 'http://localhost:8080';
-  private baseUri = 'https://fathomless-depths-87543.herokuapp.com';
+  private baseUri = 'http://localhost:8080';
+  // private baseUri = 'https://fathomless-depths-87543.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 

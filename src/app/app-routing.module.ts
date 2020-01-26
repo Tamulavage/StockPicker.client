@@ -11,7 +11,6 @@ const routes: Routes = [
   {path: 'symbol/', component: StockSymbolComponent},
   {path: 'history/', component: WatchedStockComponent},
   {path: 'trade', component: TradeComponent},
-  {path: 'trade', component: TradeComponent},
   {path: 'past', component: PastTradesComponent},
   {path: 'stock', component: StockInformationComponent},
   {path: 'stock/:stockId', component: StockInformationComponent}
