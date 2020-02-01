@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Watched } from '../models/watched';
 import { StockSymbol } from '../models/stockSymbol';
+import { tap } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -20,7 +21,10 @@ export class WatchedService {
   getWatchedStocks(): Observable<Watched[]> {
     const url = `${this.baseUri}/watch/`;
     // console.log(url);
-    return this.http.get<Watched[]>(url);
+    return this.http.get<Watched[]>(url)
+    .pipe(
+      tap(_ => console.log( _))
+    );
   }
 
   update(watched: Watched): Observable<Watched> {

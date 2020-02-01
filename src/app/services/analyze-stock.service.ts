@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Analysis } from '../models/analysis';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,9 @@ export class AnalyzeStockService {
   getStockAnalysis(stockSymbol: string, slowEMA: number, fastEMA: number): Observable<Analysis[]> {
     const url = `${this.baseUri}/analyzeWatchedStock/?symbol=${stockSymbol}&slowEMA=${slowEMA}&fastEMA=${fastEMA}`;
     console.log(url);
-    return this.http.get<Analysis[]>(url);
+    return this.http.get<Analysis[]>(url)
+    .pipe(
+      tap(_ => console.log( _))
+    );
   }
 }
